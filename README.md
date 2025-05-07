@@ -15,7 +15,6 @@ Built with Python (Flask) for the backend, HTML, CSS, and JavaScript for the fro
 * Interactive mind-map/tree visualization of OSINT tools and sub-categories in the main content area.
 * Client-side search functionality for OSINT data.
 * Light/Dark theme toggle.
-* Responsive design for various screen sizes.
 * Data for the OSINT framework is loaded from an external `arf.json` file.
 
 ## Prerequisites
