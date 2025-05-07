@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dashboard-body light-mode">
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <div class="user-greeting">
+            <img
+              src="https://placehold.co/32x32/7F00FF/FFF?text={{ username[0]|upper if username else 'U' }}"
+              alt="User Avatar"
+              class="greeting-avatar"
+            />
+            Hello, {{ username }}!
+          </div>
+        </div>
+        <div class="header-center">
+          <div class="header-logo">OSINT FRAMEWORK</div>
+        </div>
+        <div class="header-right">
+          <div class="header-search-wrapper">
+            <div class="header-search-container">
+              <input
+                type="search"
+                id="headerSearchBar"
+                placeholder="Search framework..."
+                class="header-search-bar"
+              />
+              <button class="search-button">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div
+              id="searchResultsDropdown"
+              class="search-results-dropdown"
+            ></div>
+          </div>
+          <div class="theme-switch-wrapper">
+            <span class="theme-label-text">LIGHT</span>
+            <label class="theme-switch" for="themeToggleCheckbox">
+              <input type="checkbox" id="themeToggleCheckbox" />
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <a
+            href="{{ url_for('logout') }}"
+            class="logout-btn-icon"
+            title="Logout"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <aside class="dashboard-sidebar">
+          <div class="sidebar-header">
+            <button class="sidebar-toggle-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+
+          <nav class="sidebar-nav">
+            <ul>
+              {% for category in sidebar_categories %}
+              <li
+                class="nav-item {% if category.name == default_active_category_name %}active{% endif %}"
+                data-category-id="{{ category.data_id }}"
+                data-category-name="{{ category.name }}"
+              >
+                <a href="#">
+                  <i
+                    class="fas {{ category.icon | default('fa-folder') }} item-icon"
+                  ></i>
+                  <span>{{ category.name }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </aside>
+
+        <section class="dashboard-content" id="dashboardContentArea">
+          <div id="mind-map-container">
+            <div id="mind-map-placeholder">
+              <h2>Welcome to the OSINT Framework</h2>
+              <p>
+                Select a category from the sidebar or use the search bar to
+                begin.
+              </p>
+            </div>
+          </div>
+          <svg
+            id="mind-map-lines"
+            width="100%"
+            height="100%"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 0;
+              pointer-events: none;
+            "
+          ></svg>
+        </section>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div class="footer-links">
+          <a href="#"><i class="fas fa-info-circle"></i> Info</a>
+          <a href="#"><i class="fas fa-phone-alt"></i> contact us</a>
+        </div>
+      </footer>
+    </div>
+
+    <template id="mind-map-node-template">
+      <div class="mind-map-node" draggable="true">
+        <div class="node-label"></div>
+        <div class="node-children-count"></div>
+        <div class="node-type-icon"></div>
+      </div>
+    </template>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="flash-messages-container dashboard-flashes">
+      {% for category, message in messages %}
+      <div class="flash-message flash-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <script id="osint-data" type="application/json">
+      {{ osint_data_json | safe }}
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
