@@ -26,17 +26,16 @@ Before you begin, ensure you have the following installed on your system:
 * **pip**: Python's package installer. It usually comes with Python installations. You can check by running `pip --version`.
 
 
-**IMPORTANT**: Make sure the `arf.json` file (provided separately or from previous steps) is placed in the root directory of your project (`osint_flask_app/`).
 
 ## Setup and Installation
 
 1.  **Clone the Repository (or Create Project Folder)**:
-    If this were a Git repository, you would clone it. For now, create the `osint_flask_app` directory and populate it with the files as described in "Project Structure".
+    If this were a Git repository, you would clone it. For now, create the `OSINT_Framework` directory and populate it with the files as described in "Project Structure".
 
 2.  **Navigate to the Project Directory**:
     Open your terminal or command prompt and change to the project's root directory:
     ```bash
-    cd path/to/osint_flask_app
+    cd path/to/OSINT_Framework
     ```
 
 3.  **Create a Virtual Environment (Recommended)**:
@@ -68,7 +67,7 @@ The SQLite database (`users.db`) and the `instance` folder will be created autom
 ## Running the Application
 
 1.  **Ensure your virtual environment is activated** (if you created one).
-2.  **Navigate to the project's root directory** (`osint_flask_app/`) in your terminal.
+2.  **Navigate to the project's root directory** (`OSINT_Framework/`) in your terminal.
 3.  **Run the Flask application**:
     ```bash
     python app.py
@@ -102,7 +101,7 @@ You will be redirected to the login/registration page. You can register a new ac
 
 ## Troubleshooting
 
-* **`arf.json` not found**: Ensure `arf.json` is in the root directory of the project (`osint_flask_app/`). The application will log an error if it can't find or parse this file.
+* **`arf.json` not found**: Ensure `arf.json` is in the root directory of the project (`OSINT_Framework/`). The application will log an error if it can't find or parse this file.
 * **Dependencies not installed**: Make sure you have run `pip install Flask Flask-SQLAlchemy Werkzeug` within your activated virtual environment.
 * **Port already in use**: If port 5000 is in use, Flask will usually indicate this. You can specify a different port in `app.py` if needed (e.g., `app.run(debug=True, port=5001)`).
 * **Database issues**: If you encounter problems with the database, you can try deleting the `instance/users.db` file. It will be recreated on the next run. (Note: This will delete all existing user accounts).
