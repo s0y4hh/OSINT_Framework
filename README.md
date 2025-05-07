@@ -58,7 +58,10 @@ Before you begin, ensure you have the following installed on your system:
     ```bash
     pip install Flask Flask-SQLAlchemy Werkzeug
     ```
-    (If a `requirements.txt` file were provided, you could use `pip install -r requirements.txt`)
+   ```bash
+        pip install -r requirements.txt
+   ```
+
 
 ## Database Setup
 
