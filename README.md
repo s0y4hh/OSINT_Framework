@@ -25,11 +25,7 @@ Before you begin, ensure you have the following installed on your system:
 * **Python 3.7+**: Download Python from [python.org](https://www.python.org/downloads/).
 * **pip**: Python's package installer. It usually comes with Python installations. You can check by running `pip --version`.
 
-## Project Structure
 
-Organize your project files as follows:
-
-osint_flask_app/├── app.py                 # Main Flask application file├── arf.json               # OSINT data file (IMPORTANT: Place this in the root)├── instance/              # Folder for the SQLite database (auto-created)│   └── users.db           # SQLite database file (auto-created)├── static/│   ├── css/│   │   └── style.css      # Main CSS stylesheet│   └── js/│       └── script.js      # Main JavaScript file└── templates/├── index.html         # Dashboard page template└── login_register.html # Login and registration page template
 **IMPORTANT**: Make sure the `arf.json` file (provided separately or from previous steps) is placed in the root directory of your project (`osint_flask_app/`).
 
 ## Setup and Installation
